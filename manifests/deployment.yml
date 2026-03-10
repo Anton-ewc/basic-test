@@ -1,0 +1,41 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: ewcnred 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ewcnred
+  template:
+    metadata:
+      labels:
+        app: ewcnred 
+    spec:
+      containers:
+        - name: ewcnred 
+          image: ewcacr.azurecr.io/ewcnred
+          ports:
+          - containerPort: 1880
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 1880
+            initialDelaySeconds: 30
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 1880
+            initialDelaySeconds: 60
+            periodSeconds: 30
+          resources:
+            limits:
+              memory: "4Gi"
+              cpu: "2000m"
+            requests:
+              memory: "2Gi"
+              cpu: "1000m"
+          envFrom:
+            - secretRef:
+                name: ewc-nred-env
