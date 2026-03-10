@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-    name: ewcnred
+    name: test-app
 spec:
     type: ClusterIP
     ports:
     - port: 1880 
     selector:
-        app: ewcnred
+        app: test-app
