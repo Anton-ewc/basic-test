@@ -1,0 +1,23 @@
+   apiVersion: argoproj.io/v1alpha1
+   kind: Workflow
+   metadata:
+     name: basic-test-build-image
+     namespace: argo
+     annotations:
+       argocd.argoproj.io/hook: PreSync
+       argocd.argoproj.io/hook-delete-policy: HookSucceeded
+   spec:
+     workflowTemplateRef:
+       name: build-docker-image
+     arguments:
+       parameters:
+         - name: repoUrl
+           value: "https://github.com/YOUR_USER/YOUR_APP_REPO.git"
+         - name: revision
+           value: "main"
+         - name: context
+           value: "AZURE_MIG/basic-test"
+         - name: dockerfile
+           value: "Dockerfile"
+         - name: destinationImage
+           value: "us-central1-docker.pkg.dev/GLASS_PROJECT_ID/app-images/test-app:latest"
