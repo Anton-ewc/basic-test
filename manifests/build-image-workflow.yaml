@@ -2,7 +2,7 @@
    kind: Workflow
    metadata:
      name: basic-test-build-image
-     namespace: argo
+     namespace: default
      annotations:
        argocd.argoproj.io/hook: PreSync
        argocd.argoproj.io/hook-delete-policy: HookSucceeded
