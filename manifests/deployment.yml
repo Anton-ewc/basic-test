@@ -14,7 +14,6 @@ spec:
     spec:
       containers:
         - name: test-app
-          image: gcr.io/glass-watch-486914-c7/test-app:latest
           ports:
           - containerPort: 3000
           readinessProbe:
