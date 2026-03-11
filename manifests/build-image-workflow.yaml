@@ -9,6 +9,7 @@
    spec:
      workflowTemplateRef:
        name: build-docker-image
+       clusterScope: true
      arguments:
        parameters:
          - name: repoUrl
