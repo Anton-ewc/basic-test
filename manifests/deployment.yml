@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: test-app
-          image: gcr.io/noimg/test-app:latest
+          image: us-central1-docker.pkg.dev/GLASS_PROJECT_ID/app-images/test-app:latest
           ports:
           - containerPort: 3000
           readinessProbe:
@@ -31,8 +31,8 @@ spec:
             periodSeconds: 30
           resources:
             limits:
-              memory: "4Gi"
-              cpu: "2000m"
-            requests:
               memory: "2Gi"
               cpu: "1000m"
+            requests:
+              memory: "1Gi"
+              cpu: "500m"
