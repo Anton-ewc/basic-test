@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: test-app
-          image: us-central1-docker.pkg.dev/$PROJECT_ID/app-images/test-app:latest
+          image: test-app:latest
           ports:
           - containerPort: 3000
           readinessProbe:
