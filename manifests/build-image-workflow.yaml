@@ -45,7 +45,7 @@ spec:
               arguments:
                 parameters:
                   - name: repoUrl
-                    value: "{{repoUrl}}"
+                    value: "git://{{repoUrl}}"
                   - name: revision
                     value: "HEAD"
                   - name: context
