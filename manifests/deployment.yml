@@ -14,7 +14,6 @@ spec:
     spec:
       containers:
         - name: test-app
-          image: us-central1-docker.pkg.dev/GLASS_PROJECT_ID/app-images/test-app:latest
           ports:
           - containerPort: 3000
           readinessProbe:
