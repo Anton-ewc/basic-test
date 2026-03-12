@@ -1,16 +1,40 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: test-app
+  namespace: argocd
 spec:
+  generators:
+    - list:
+        elements:
+          - name: test-app
+            repoUrl: "https://github.com/Anton-ewc/basic-test.git"
+            path: "manifests"
+            destinationNamespace: "default"
+            destinationServer: "https://kubernetes.default.svc"
   template:
+    metadata:
+      name: "{{name}}"
     spec:
+      project: default
       source:
-        repoURL: "{{repo.url}}"
+        repoURL: "{{repoUrl}}"
         path: "{{path}}"
+        targetRevision: HEAD
+      destination:
+        server: "{{destinationServer}}"
+        namespace: "{{destinationNamespace}}"
+      syncPolicy:
+        automated:
+          selfHeal: true
+          prune: true
       hooks:
         - manifest: |
             apiVersion: argoproj.io/v1alpha1
             kind: Workflow
             metadata:
               name: build-image-{{name}}
-              namespace: {{destination.namespace}}
+              namespace: {{destinationNamespace}}
               annotations:
                 argocd.argoproj.io/hook: PreSync
                 argocd.argoproj.io/hook-delete-policy: HookSucceeded
@@ -21,8 +45,12 @@ spec:
               arguments:
                 parameters:
                   - name: repoUrl
-                    value: "git://{{repo.url}}"
+                    value: "{{repoUrl}}"
                   - name: revision
-                    value: "{{targetRevision}}"
+                    value: "HEAD"
                   - name: context
                     value: "{{path}}"
+                  - name: dockerfile
+                    value: "Dockerfile"
+                  - name: destinationImage
+                    value: "us-central1-docker.pkg.dev/GLASS_PROJECT_ID/app-images/test-app:latest"
