@@ -52,5 +52,3 @@ spec:
                     value: "{{path}}"
                   - name: dockerfile
                     value: "Dockerfile"
-                  - name: destinationImage
-                    value: "us-central1-docker.pkg.dev/GLASS_PROJECT_ID/app-images/test-app:latest"
