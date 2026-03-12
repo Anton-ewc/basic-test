@@ -52,5 +52,7 @@ spec:
                     value: "{{path}}"
                   - name: dockerfile
                     value: "Dockerfile"
+                  - name: appName
+                    value: "{{name}}"
                   - name: destinationImage
                     value: "test-app:latest"
