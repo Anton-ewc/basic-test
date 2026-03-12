@@ -21,6 +21,9 @@ spec:
         repoURL: "{{repoUrl}}"
         path: "{{path}}"
         targetRevision: HEAD
+        kustomize:
+          images:
+            - test-app=$REGION-docker.pkg.dev/$PROJECT_ID/app-images/test-app:latest
       destination:
         server: "{{destinationServer}}"
         namespace: "{{destinationNamespace}}"
@@ -54,5 +57,3 @@ spec:
                     value: "Dockerfile"
                   - name: appName
                     value: "{{name}}"
-                  - name: destinationImage
-                    value: "test-app:latest"
