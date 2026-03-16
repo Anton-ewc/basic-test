@@ -23,9 +23,6 @@ spec:
         targetRevision: HEAD
         plugin:
           name: image-overloader
-        kustomize:
-          images:
-            - test-app=$REGION-docker.pkg.dev/$PROJECT_ID/app-images/test-app:latest
       destination:
         server: "{{destinationServer}}"
         namespace: "{{destinationNamespace}}"
