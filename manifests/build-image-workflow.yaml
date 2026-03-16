@@ -56,3 +56,5 @@ spec:
                     value: "Dockerfile"
                   - name: appName
                     value: "{{name}}"
+                  - name: tmpx
+                    value: "{{name}}"
