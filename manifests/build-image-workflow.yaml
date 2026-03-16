@@ -20,7 +20,7 @@ spec:
       source:
         repoURL: "{{repoUrl}}"
         path: "{{path}}"
-        targetRevision: HEAD
+        targetRevision: main
         plugin:
           name: image-overloader
       destination:
