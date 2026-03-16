@@ -10,6 +10,7 @@ spec:
           - name: test-app
             repoUrl: "https://github.com/Anton-ewc/basic-test.git"
             path: "manifests"
+            revision: "main"
             destinationNamespace: "default"
             destinationServer: "https://kubernetes.default.svc"
   template:
@@ -49,7 +50,7 @@ spec:
                   - name: repoUrl
                     value: "git://{{repoUrl}}"
                   - name: revision
-                    value: "HEAD"
+                    value: "{{revision}}"
                   - name: context
                     value: "{{path}}"
                   - name: dockerfile
